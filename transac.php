@@ -73,7 +73,7 @@ switch ($get_request) {
 
                 move_uploaded_file($temp_location, $file_path);
 
-                $query = "INSERT INTO `archive_items` (`id`, `file_name`, `company`, `storage_type`, `description`, `location`, `mode_copy`, `docs`, `recieved_by`) VALUES ('', '$file_name', '$company', '$storage_type', '$file_desc', '$file_loc', '$mode_copy', '$file_names_to_db', '$names')";
+                $query = "INSERT INTO `archive_items` (`id`, `file_name`, `company`, `dept`, `storage_type`, `description`, `location`, `mode_copy`, `docs`, `recieved_by`) VALUES ('', '$file_name', '$company', '$department', '$storage_type', '$file_desc', '$file_loc', '$mode_copy', '$file_names_to_db', '$names')";
 
                 $insert = mysqli_query($db, $query);
                 if ($insert) {
@@ -127,10 +127,10 @@ switch ($get_request) {
 //                     $exist_files_result = mysqli_fetch_array($exist_files_query);
 //                     $exist_files = $exist_files_result['files'] . ' ';
 
-//                     $file_name = $edit_file;
+//                     $doc_name = $edit_file;
 //                     $target_dir = 'assets/fileupload/files/';
 
-//                     $file_path = $target_dir . $file_name;
+//                     $file_path = $target_dir . $doc_name;
 //                     $file_ext = pathinfo($file_path, PATHINFO_EXTENSION);
 //                     $file_size = $uploaded_files['size'][$key];
 //                     $temp_location = $uploaded_files['tmp_name'][$key];
@@ -145,7 +145,7 @@ switch ($get_request) {
 
 
 //                     if (empty($errors)) {
-//                         $edit_file_names_to_db .= $file_name;
+//                         $edit_file_names_to_db .= $doc_name;
 //                         $edit_file_names_to_db = $exist_files . $edit_file_names_to_db;
 
 //                         move_uploaded_file($temp_location, $file_path);
