@@ -51,7 +51,7 @@ if (!isset($_SESSION['id-archive'])) {
                 <?php
                 if ($_SESSION['role'] == 'hr') {
                 ?>
-                    <li><a href="new_claim.php"><span class="fa fa-pencil"></span> <span class="xn-text"> Archive List</span></a></li>
+                    <li><a href="archive_items.php"><span class="fa fa-pencil"></span> <span class="xn-text"> Archived Items List</span></a></li>
                     <li><a href="new_file.php"><span class="fa fa-th"></span> <span class="xn-text"> New File Entry</span></a></li>
                 <?php } ?>
 

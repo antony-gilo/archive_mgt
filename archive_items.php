@@ -9,7 +9,7 @@ if (!isset($_SESSION['id-archive'])) {
 
 <head>
     <!-- META SECTION -->
-    <title>Archive Management</title>
+    <title>TAL Archives Management</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -97,79 +97,44 @@ if (!isset($_SESSION['id-archive'])) {
 
             <!-- START BREADCRUMB -->
             <ul class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">Dashboard</li>
+                <li><a href="#">Talgroup Archive Management</a></li>
+                <li class="active"><a href="#">Create New Archive Item</a></li>
+
             </ul>
             <!-- END BREADCRUMB -->
 
+            <!-- PAGE TITLE -->
+            <div class="page-title">
+                <h2><span class="fa fa-arrow-circle-o-left"></span> Create New Archive Item</h2>
+            </div>
+            <!-- END PAGE TITLE -->
             <!-- PAGE CONTENT WRAPPER -->
             <div class="page-content-wrap">
-
-                <!-- START WIDGETS -->
-                <div class="row">
-
-
-                    <div class="col-md-3">
-
-                        <!-- START WIDGET CLOCK -->
-                        <div class="widget widget-info widget-padding-sm">
-                            <div class="widget-big-int plugin-clock">00:00</div>
-                            <div class="widget-subtitle plugin-date">Loading...</div>
-                            <div class="widget-controls">
-                                <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="left" title="Remove Widget"><span class="fa fa-times"></span></a>
-                            </div>
-                            <div class="widget-buttons widget-c3">
-                                <div class="col">
-                                    <a href="#"><span class="fa fa-clock-o"></span></a>
-                                </div>
-                                <div class="col">
-                                    <a href="#"><span class="fa fa-bell"></span></a>
-                                </div>
-                                <div class="col">
-                                    <a href="#"><span class="fa fa-calendar"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END WIDGET CLOCK -->
-
-                    </div>
-                </div>
-                <!-- END WIDGETS -->
-
-
-                <div class="row">
-                    <div class="col-md-8">
-
-                        <!-- START SALES BLOCK -->
-
-                        <!-- END SALES BLOCK -->
-
-                    </div>
-                    <div class="common-modal modal fade" id="common-Modal1" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-content">
-                            <ul class="list-inline item-details">
-                                <li><a href="http://themifycloud.com/downloads/janux-premium-responsive-bootstrap-admin-dashboard-template/">Admin templates</a></li>
-                                <li><a href="http://themescloud.org">Bootstrap themes</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-
-                </div>
-
-                <!-- START DASHBOARD CHART -->
-                <div class="chart-holder" id="dashboard-area-1" style="height: 200px;"></div>
-                <div class="block-full-width">
-
-                </div>
-                <!-- END DASHBOARD CHART -->
+                    page content
 
             </div>
-            <!-- END PAGE CONTENT WRAPPER -->
-        </div>
         <!-- END PAGE CONTENT -->
     </div>
     <!-- END PAGE CONTAINER -->
+    <!-- MESSAGE BOX-->
+    <div class="message-box animated fadeIn" data-sound="alert" id="mb-remove-row">
+        <div class="mb-container">
+            <div class="mb-middle">
+                <div class="mb-title"><span class="fa fa-times"></span> Remove <strong>Data</strong> ?</div>
+                <div class="mb-content">
+                    <p>Are you sure you want to remove this row?</p>
+                    <p>Press Yes if you sure.</p>
+                </div>
+                <div class="mb-footer">
+                    <div class="pull-right">
+                        <button class="btn btn-success btn-lg mb-control-yes">Yes</button>
+                        <button class="btn btn-default btn-lg mb-control-close">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MESSAGE BOX-->
 
     <!-- MESSAGE BOX-->
     <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
@@ -178,7 +143,7 @@ if (!isset($_SESSION['id-archive'])) {
                 <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
                 <div class="mb-content">
                     <p>Are you sure you want to log out?</p>
-                    <p>Press No if you want to continue working. Press Yes to logout current user.</p>
+                    <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
                 </div>
                 <div class="mb-footer">
                     <div class="pull-right">
@@ -206,19 +171,14 @@ if (!isset($_SESSION['id-archive'])) {
     <!-- START THIS PAGE PLUGINS-->
     <script type='text/javascript' src='js/plugins/icheck/icheck.min.js'></script>
     <script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
-    <script type="text/javascript" src="js/plugins/scrolltotop/scrolltopcontrol.js"></script>
 
-    <script type="text/javascript" src="js/plugins/morris/raphael-min.js"></script>
-    <script type="text/javascript" src="js/plugins/morris/morris.min.js"></script>
-    <script type="text/javascript" src="js/plugins/rickshaw/d3.v3.js"></script>
-    <script type="text/javascript" src="js/plugins/rickshaw/rickshaw.min.js"></script>
-    <script type='text/javascript' src='js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'></script>
-    <script type='text/javascript' src='js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'></script>
-    <script type='text/javascript' src='js/plugins/bootstrap/bootstrap-datepicker.js'></script>
-    <script type="text/javascript" src="js/plugins/owl/owl.carousel.min.js"></script>
-
-    <script type="text/javascript" src="js/plugins/moment.min.js"></script>
-    <script type="text/javascript" src="js/plugins/daterangepicker/daterangepicker.js"></script>
+    <script type="text/javascript" src="js/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/plugins/tableexport/tableExport.js"></script>
+    <script type="text/javascript" src="js/plugins/tableexport/jquery.base64.js"></script>
+    <script type="text/javascript" src="js/plugins/tableexport/html2canvas.js"></script>
+    <script type="text/javascript" src="js/plugins/tableexport/jspdf/libs/sprintf.js"></script>
+    <script type="text/javascript" src="js/plugins/tableexport/jspdf/jspdf.js"></script>
+    <script type="text/javascript" src="js/plugins/tableexport/jspdf/libs/base64.js"></script>
     <!-- END THIS PAGE PLUGINS-->
 
     <!-- START TEMPLATE -->
@@ -226,7 +186,6 @@ if (!isset($_SESSION['id-archive'])) {
 
     <script type="text/javascript" src="js/plugins.js"></script>
     <script type="text/javascript" src="js/actions.js"></script>
-    <script type="text/javascript" src="js/demo_dashboard.js"></script>
     <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->
 </body>
