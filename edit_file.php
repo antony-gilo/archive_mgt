@@ -150,7 +150,7 @@ include('connection.php');
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" required=required name="file_name" class="form-control" value="<?php echo $file_name;   ?>" />
+                                                <input type="text" name="file_name" class="form-control" value="<?php echo $file_name;   ?>" />
                                                 <input type="hidden" name="id" class="form-control" value="<?php echo $_GET['id']; ?>" />
                                             </div>
                                             <span class="help-block">The Name Of the File To Be Archived</span>
@@ -162,7 +162,7 @@ include('connection.php');
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-caret-down"></span></span>
-                                                <select class="form-control" required name="company">
+                                                <select class="form-control" name="company">
                                                     <option value="<?php echo $company;   ?>" selected default><?php echo $company;   ?></option>
                                                     <option value="BFT">BFT</option>
                                                     <option value="MTS">MTS</option>
@@ -182,7 +182,7 @@ include('connection.php');
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-caret-down"></span></span>
-                                                <select class="form-control" required name="dept" >
+                                                <select class="form-control" name="dept" >
                                                     <option value="<?php echo $department;   ?>" selected default><?php echo $department;   ?></option>
                                                     <option value="HR/Admin">HR & Administration</option>
                                                     <option value="Accounts">Accounts</option>
@@ -198,7 +198,7 @@ include('connection.php');
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-caret-down"></span></span>
-                                                <select class="form-control" required name="storage" >
+                                                <select class="form-control" name="storage" >
                                                 <option value="<?php echo $storage_type;   ?>" selected default><?php echo $storage_type;   ?></option>
                                                     <option value="file">Document File</option>
                                                     <option value="box">Box</option>
@@ -213,7 +213,7 @@ include('connection.php');
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <textarea name="file_desc" class="form-control" rows="5" required><?php echo $file_desc ?></textarea>
+                                                <textarea name="file_desc" class="form-control" rows="5"><?php echo $file_desc ?></textarea>
                                             </div>
                                             <span class="help-block">Brief Description For The File Items Being Archived</span>
                                         </div>
@@ -224,7 +224,7 @@ include('connection.php');
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-caret-down"></span></span>
-                                                <select class="form-control" required name="file_loc">
+                                                <select class="form-control" name="file_loc">
                                                     <option value="<?php echo $file_loc ?>" selected default><?php echo $file_loc ?></option>
                                                     <option value="Archive 1">Archive 1</option>
                                                     <option value="Archive 2">Archive 2</option>
@@ -242,7 +242,7 @@ include('connection.php');
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-caret-down"></span></span>
-                                                <select class="form-control" required name="mode_copy">
+                                                <select class="form-control" name="mode_copy">
                                                     <option value="<?php echo $mode_copy ?>" selected default><?php echo $mode_copy ?></option>
                                                     <option value="soft">Scanned</option>
                                                     <option value="hard">Hard Copy</option>
