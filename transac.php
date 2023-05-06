@@ -187,7 +187,7 @@ switch ($get_request) {
     case 'delete':
 
         $delete_id = $_GET['id'];
-        $delete_query = "DELETE FROM claims WHERE id = '$delete_id'";
+        $delete_query = "DELETE FROM `archive_items` WHERE id = '$delete_id'";
 
         $delete_item = mysqli_query($db, $delete_query);
 
