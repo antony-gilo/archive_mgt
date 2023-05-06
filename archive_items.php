@@ -166,7 +166,7 @@ $user_id = $_SESSION['id-archive'];
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             $i = $i + 1;
                                             echo '<tr>';
-                                            echo '<td>' . $i . '</td>';
+                                            echo '<td>' . 'TAL-00'. $i . '</td>';
                                             echo '<td> <a class="btn btn-xs" href="drilldown.php?action=edit&id=' . $row['id'] . '" > ' . $row['file_name'] . '</a></td>';
                                             echo '<td>' . $row['company'] . '</td>';
                                             echo '<td>' . $row['description'] . '</td>';
