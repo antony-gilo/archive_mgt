@@ -56,17 +56,15 @@ $user_id = $_SESSION['id-archive'];
 
                     </div>
                 </li>
-                <li><a href="docs.php"><span class="fa fa-list-ul"></span> <span class="xn-text"> Document List</span></a></li>
+                <li><a href="archive_items.php"><span class="fa fa-list-ul"></span> <span class="xn-text"> Archived Items List</span></a></li>
+                <li><a href="new_file.php"><span class="fa fa-archive"></span> <span class="xn-text"> New File Entry</span></a></li>
+                <li><a href="release.php"><span class="fa fa-exchange"></span> <span class="xn-text"> Release Archive Item</span></a></li>
                 <?php
                 if ($_SESSION['role'] == 'hr') {
                 ?>
-                    <li><a href="archive_items.php"><span class="fa fa-pencil"></span> <span class="xn-text"> Archived Items List</span></a></li>
-                    <li><a href="new_file.php"><span class="fa fa-th"></span> <span class="xn-text"> New File Entry</span></a></li>
+                    <li><a href="audit.php"><span class="fa fa-eye"></span> <span class="xn-text"> Audit List</span></a></li>
                 <?php } ?>
-
-                <li><a href="changepassword.php"><span class="fa fa-pencil"></span> <span class="xn-text"> Release Archive Item</span></a></li>
-
-                <li><a href="changepassword.php"><span class="fa fa-pencil"></span> <span class="xn-text"> Change Password</span></a></li>
+                <li><a href="changepassword.php"><span class="fa fa-cogs"></span> <span class="xn-text"> Change Password</span></a></li>
 
             </ul>
             <!-- END X-NAVIGATION -->

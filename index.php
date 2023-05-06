@@ -3,6 +3,15 @@ session_start();
 if (!isset($_SESSION['id-archive'])) {
     header('Location: login.php');
 }
+
+include('connection.php');
+
+$user_id = $_SESSION['id-archive'];
+
+            $user_query = "SELECT names FROM users WHERE id = '$user_id'";
+            $user_query_result = mysqli_query($db, $user_query);
+            $user_query_row = mysqli_fetch_assoc($user_query_result);
+            $user_names = $user_query_row['names'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,24 +49,22 @@ if (!isset($_SESSION['id-archive'])) {
 
                         <div class="profile-data">
                             <div class="profile-data-name">
-                                <div class="profile-data-name"><?php echo strtoupper($_SESSION['username']); ?></div>
+                                <div class="profile-data-name"><?php echo strtoupper($user_names); ?></div>
                             </div>
 
                         </div>
 
                     </div>
                 </li>
-                <li><a href="docs.php"><span class="fa fa-list-ul"></span> <span class="xn-text"> Document List</span></a></li>
+                <li><a href="archive_items.php"><span class="fa fa-list-ul"></span> <span class="xn-text"> Archived Items List</span></a></li>
+                <li><a href="new_file.php"><span class="fa fa-archive"></span> <span class="xn-text"> New File Entry</span></a></li>
+                <li><a href="release.php"><span class="fa fa-exchange"></span> <span class="xn-text"> Release Archive Item</span></a></li>
                 <?php
                 if ($_SESSION['role'] == 'hr') {
                 ?>
-                    <li><a href="archive_items.php"><span class="fa fa-pencil"></span> <span class="xn-text"> Archived Items List</span></a></li>
-                    <li><a href="new_file.php"><span class="fa fa-th"></span> <span class="xn-text"> New File Entry</span></a></li>
+                    <li><a href="audit.php"><span class="fa fa-eye"></span> <span class="xn-text"> Audit List</span></a></li>
                 <?php } ?>
-
-                <li><a href="changepassword.php"><span class="fa fa-pencil"></span> <span class="xn-text"> Release Archive Item</span></a></li>
-
-                <li><a href="changepassword.php"><span class="fa fa-pencil"></span> <span class="xn-text"> Change Password</span></a></li>
+                <li><a href="changepassword.php"><span class="fa fa-cogs"></span> <span class="xn-text"> Change Password</span></a></li>
 
             </ul>
             <!-- END X-NAVIGATION -->
