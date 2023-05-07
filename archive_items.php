@@ -218,7 +218,7 @@ $user_id = $_SESSION['id-archive'];
                                                 echo '<td> <a  type="button" class="btn btn-xs btn-warning" href="edit_file.php?action=edit&id=' . $row['id'] . '"> EDIT </a> </td>';
 
                                                 if ($row['requested_by'] !== '' ) {
-                                                    echo '<td> <a  type="button" class="btn btn-xs btn-info" href="release.php?action=getin&id=' . $row['id'] . '"> GET IN </a> </td>';
+                                                    echo '<td> <a  type="button" class="btn btn-xs btn-info" href="recieve.php?action=getin&id=' . $row['id'] . '"> GET IN </a> </td>';
                                                 }else {
                                                     echo '<td> <a  type="button" class="btn btn-xs btn-primary" href="release.php?action=release&id=' . $row['id'] . '"> GET OUT </a> </td>';
                                                 }
@@ -230,7 +230,7 @@ $user_id = $_SESSION['id-archive'];
                                                 <?php
                                                 echo '<td> <a  type="button" class="btn btn-xs btn-warning" href="edit_file.php?action=edit&id=' . $row['id'] . '"> EDIT </a> </td>';
                                                 if ($row['requested_by'] !== '' ) {
-                                                    echo '<td> <a  type="button" class="btn btn-xs btn-info" href="release.php?action=getin&id=' . $row['id'] . '"> GET IN </a> </td>';
+                                                    echo '<td> <a  type="button" class="btn btn-xs btn-info" href="recieve.php?action=getin&id=' . $row['id'] . '"> GET IN </a> </td>';
                                                 }else {
                                                     echo '<td> <a  type="button" class="btn btn-xs btn-primary" href="release.php?action=release&id=' . $row['id'] . '"> GET OUT </a> </td>';
                                                 }

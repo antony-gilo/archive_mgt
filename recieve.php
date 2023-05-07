@@ -104,14 +104,14 @@ $user_id = $_SESSION['id-archive'];
             <!-- START BREADCRUMB -->
             <ul class="breadcrumb">
                 <li><a href="#">Talgroup Archive Management</a></li>
-                <li class="active"><a href="#">Release Archive Item</a></li>
+                <li class="active"><a href="#">Recieve Archive Item</a></li>
 
             </ul>
             <!-- END BREADCRUMB -->
 
             <!-- PAGE TITLE -->
             <div class="page-title">
-                <h2><span class="fa fa-arrow-circle-o-left"></span> Get Out Archive Item</h2>
+                <h2><span class="fa fa-arrow-circle-o-left"></span> Get File Back IN Archive</h2>
             </div>
             <!-- END PAGE TITLE -->
 
@@ -138,7 +138,7 @@ $user_id = $_SESSION['id-archive'];
                 <div class="row">
                     <div class="col-md-12">
 
-                        <form class="form-horizontal" method="post" action="transac.php?action=release" enctype="multipart/form-data">
+                        <form class="form-horizontal" method="post" action="transac.php?action=recieve" enctype="multipart/form-data">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
 
@@ -159,22 +159,22 @@ $user_id = $_SESSION['id-archive'];
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Name Of File Requester</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Name Of Person Returning Archive File</label>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" required=required name="requested_by" class="form-control" />
+                                                <input type="text" required=required name="returned_by" class="form-control" />
                                             </div>
-                                            <span class="help-block">The Name Of the Person Requesting Archive File</span>
+                                            <span class="help-block">The Name Of the Person Returning Archive File</span>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Expected Return Date</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Actual Return Date</label>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                                <input type="date" name="lead_time" class="form-control" value="<?php echo $date_due; ?>">
+                                                <input type="date" name="return_date" class="form-control" value="<?php echo $date_due; ?>">
                                             </div>
                                             <span class="help-block">Click on CALENDER ICON ON THE RIGHT to get datepicker</span>
                                         </div>
@@ -182,7 +182,7 @@ $user_id = $_SESSION['id-archive'];
 
                                 <div class="panel-footer">
                                     <button type="reset" class="btn btn-default">Clear Form</button>
-                                    <button type="submit" class="btn btn-primary pull-right" name="release_file">Submit</button>
+                                    <button type="submit" class="btn btn-primary pull-right" name="recieve_file">Submit</button>
                                 </div>
                             </div>
                         </form>
