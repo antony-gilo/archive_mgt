@@ -223,7 +223,11 @@ $user_id = $_SESSION['id-archive'];
 
                                                 <?php
                                                 echo '<td> <a  type="button" class="btn btn-xs btn-warning" href="edit_file.php?action=edit&id=' . $row['id'] . '"> EDIT </a> </td>';
-                                                echo '<td> <a  type="button" class="btn btn-xs btn-primary" href="release.php?action=release&id=' . $row['id'] . '"> GET OUT </a> </td>';
+                                                if ($row['requested_by'] !== '' ) {
+                                                    echo '<td> <a  type="button" class="btn btn-xs btn-info" href="release.php?action=getin&id=' . $row['id'] . '"> GET IN </a> </td>';
+                                                }else {
+                                                    echo '<td> <a  type="button" class="btn btn-xs btn-primary" href="release.php?action=release&id=' . $row['id'] . '"> GET OUT </a> </td>';
+                                                }
                                                 ?>
                                                 <td>
                                                     <a type="button" href="<?php echo 'transac.php?action=delete&id=' . $row['id'] ?>" title="delete" class="btn btn-xs btn-danger" onclick="return confirm('Are you sure you want to delete this item')">DELETE</a>
