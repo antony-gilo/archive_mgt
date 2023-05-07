@@ -132,6 +132,8 @@ $user_id = $_SESSION['id-archive'];
                 $file_loc = $row['location'];
                 $mode_copy = ucfirst($row['mode_copy']);
                 $files = $row['docs'];
+                $requested_by = $row['requested_by'];
+                $lead_time = $row['lead_time'];
                 ?>
 
 

@@ -209,6 +209,42 @@ switch ($get_request) {
 
         break;
 
+    case 'recieve':
+
+        if (isset($_POST['recieve_file'])) {
+
+            $user_id = $_SESSION['id-archive'];
+
+            $user_query = "SELECT names FROM users WHERE id = '$user_id'";
+            $user_query_result = mysqli_query($db, $user_query);
+            $user_query_row = mysqli_fetch_assoc($user_query_result);
+            $user_names = $user_query_row['names'];
+            
+            $recieve_id = $_POST['id'];
+            $returned_by = $_POST['returned_by'];
+            $return_date = $_POST['return_date'];
+            $received_by = $user_names;
+            $status = 'IN';
+
+            $requested_by = '';
+            $lead_time = '';
+
+            $release_query = "UPDATE `archive_items` SET `returned_by` = '$returned_by', `return_date` = '$return_date', `status` = '$status', `requested_by` = '$requested_by', `lead_time` = '$lead_time', `received_by` = '$received_by'  WHERE `id` = '$recieve_id'";
+
+            $release_item = mysqli_query($db, $release_query);
+
+
+            if ($release_item) {
+                echo '<script type="text/javascript">
+                        alert("Archive File Recieved BACK IN Successfully!");
+                        window.location = "archive_items.php";
+                    </script>';
+            }
+
+        }
+
+        break;
+
     case 'delete':
 
         $delete_id = $_GET['id'];
