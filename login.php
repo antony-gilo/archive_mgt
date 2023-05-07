@@ -77,6 +77,9 @@ unset($_SESSION['id-archive']);
             <div class="login-box animated fadeInDown">
 
                 <div class="login-body">
+                    <h3 style="color: azure;"> TAL ARCHIVE MANAGEMENT SYSTEM </h3>
+                    <br>
+                    <hr>
                     <div class="login-title"><strong>Welcome</strong>, Please login</div>
                     <form action="index.html" class="form-horizontal" method="post">
                         <div class="form-group">
