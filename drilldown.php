@@ -73,7 +73,6 @@ $user_id = $_SESSION['id-archive'];
                 </li>
                 <li><a href="archive_items.php"><span class="fa fa-list-ul"></span> <span class="xn-text"> Archived Items List</span></a></li>
                 <li><a href="new_file.php"><span class="fa fa-archive"></span> <span class="xn-text"> New File Entry</span></a></li>
-                <li><a href="release.php"><span class="fa fa-exchange"></span> <span class="xn-text"> Release Archive Item</span></a></li>
                 <?php
                 if ($_SESSION['role'] == 'hr') {
                 ?>
