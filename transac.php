@@ -184,6 +184,31 @@ switch ($get_request) {
 
         break;
 
+    case 'release':
+
+        if (isset($_POST['release_file'])) {
+            
+            $release_id = $_POST['id'];
+            $requested_by = $_POST['requested_by'];
+            $lead_time = $_POST['lead_time'];
+            $status = 'OUT';
+
+            $release_query = "UPDATE `archive_items` SET `requested_by` = '$requested_by', `lead_time` = '$lead_time', `status` = '$status' WHERE `id` = '$release_id'";
+
+            $release_item = mysqli_query($db, $release_query);
+
+
+            if ($release_item) {
+                echo '<script type="text/javascript">
+                        alert("Archive File Released OUT Successfully!");
+                        window.location = "archive_items.php";
+                    </script>';
+            }
+
+        }
+
+        break;
+
     case 'delete':
 
         $delete_id = $_GET['id'];
@@ -193,7 +218,7 @@ switch ($get_request) {
 
         if ($delete_item) {
             echo '<script type="text/javascript">
-                    alert("Claim Item Deleted Successfully!");
+                    alert("Archive File Item Deleted Successfully!");
                     window.location = "archive_items.php";
                   </script>';
         }

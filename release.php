@@ -105,141 +105,88 @@ $user_id = $_SESSION['id-archive'];
             <!-- START BREADCRUMB -->
             <ul class="breadcrumb">
                 <li><a href="#">Talgroup Archive Management</a></li>
-                <li class="active"><a href="#">List of Archive Items</a></li>
+                <li class="active"><a href="#">Release Archive Item</a></li>
 
             </ul>
             <!-- END BREADCRUMB -->
 
             <!-- PAGE TITLE -->
             <div class="page-title">
-                <h2><span class="fa fa-arrow-circle-o-left"></span> Archive Items List</h2>
+                <h2><span class="fa fa-arrow-circle-o-left"></span> Get Out Archive Item</h2>
             </div>
             <!-- END PAGE TITLE -->
+
             <!-- PAGE CONTENT WRAPPER -->
             <div class="page-content-wrap">
-            <div class="row">
+
+                <?php
+
+                $archive_item_query = 'SELECT * FROM `archive_items` WHERE id =' . (int)$_GET['id'];
+                $result = mysqli_query($db, $archive_item_query);
+
+                $row = mysqli_fetch_array($result);
+                $company = $row['company'];
+                $file_name = $row['file_name'];
+                $department = $row['dept'];
+                $storage_type = ucfirst($row['storage_type']);
+                $file_desc = $row['description'];
+                $file_loc = $row['location'];
+                $mode_copy = ucfirst($row['mode_copy']);
+                $files = $row['docs'];
+                ?>
+
+
+                <div class="row">
                     <div class="col-md-12">
 
-                        <!-- START DATATABLE EXPORT -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
+                        <form class="form-horizontal" method="post" action="transac.php?action=release" enctype="multipart/form-data">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
 
-                                <div class="btn-group pull-right">
-                                    <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button>
-                                    <ul class="dropdown-menu">
-
-                                        <li><a href="#" onClick="$('#customers2').tableExport({type:'excel',escape:'false'});"><img src='img/icons/xls.png' width="24" /> XLS</a></li>
-
+                                    <ul class="panel-controls">
+                                        <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                                     </ul>
                                 </div>
 
+                                <div class="panel-body">
+
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <input type="hidden" name="file_name" class="form-control" value="<?php echo $file_name;   ?>" />
+                                                <input type="hidden" name="id" class="form-control" value="<?php echo $_GET['id']; ?>" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Name Of File Requester</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" required=required name="requested_by" class="form-control" />
+                                            </div>
+                                            <span class="help-block">The Name Of the Person Requesting Archive File</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Expected Return Date</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                                <input type="date" name="lead_time" class="form-control" value="<?php echo $date_due; ?>">
+                                            </div>
+                                            <span class="help-block">Click on CALENDER ICON ON THE RIGHT to get datepicker</span>
+                                        </div>
+                                    </div>
+
+                                <div class="panel-footer">
+                                    <button type="reset" class="btn btn-default">Clear Form</button>
+                                    <button type="submit" class="btn btn-primary pull-right" name="release_file">Submit</button>
+                                </div>
                             </div>
-                            <div class="panel-body">
-                                <table id="customers2" class="table datatable">
-                                    <thead>
-                                        <tr>
-                                        <tr>
-                                            <th>REF No.</th>
-                                            <th>File Name</th>
-                                            <th>Company</th>
-                                            <th>File Description</th>
-                                            <th>Department</th>
-                                            <th>Storage Type</th>
-                                            <th>File Location</th>
-                                            <th>File Status</th>
-                                            <th>Mode of Copy</th>
-                                            <th>Received By</th>
-                                            <th>IN Date</th>
-                                            <th>Related Documents</th>
-                                            <th>Requested By</th>
-                                            <th>Lead Time</th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $query = 'SELECT * FROM  `archive_items`';
-                                        $result = mysqli_query($db, $query) or die(mysqli_error($db));
-                                        $i = 0;
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            $i = $i + 1;
-                                            echo '<tr>';
-                                            echo '<td>' . 'TAL-00'. $i . '</td>';
-                                            echo '<td> <a class="btn btn-xs" href="drilldown.php?action=edit&id=' . $row['id'] . '" > ' . $row['file_name'] . '</a></td>';
-                                            echo '<td>' . $row['company'] . '</td>';
-                                            echo '<td>' . $row['description'] . '</td>';
-                                            echo '<td>' . $row['dept'] . '</td>';
-                                            echo '<td>' . ucfirst($row['storage_type']) . '</td>';
-                                            echo '<td>' . $row['location'] . '</td>';
-                                            echo '<td>' . $row['status'] . '</td>';
-                                            echo '<td>';
-                                            if ($row['mode_copy'] === 'hard') {
-                                                echo 'Hard Copy';
-                                            }else {
-                                                echo 'Scanned';
-                                            }
-                                            echo '</td>';
-                                            echo '<td>' . $row['received_by'] . '</td>';
-                                            echo '<td>' . $row['in_date'] . '</td>';
-                                            
-                                            $file_names = $row['docs'];
-
-                                            $files_array = explode(',', $file_names);
-
-                                            echo '<td>';
-                                            foreach ($files_array as $file_name) {
-                                                if ($file_name === null ) {
-                                                    echo 'Documents not scanned.';
-                                                } else {
-                                                    echo ', ' . $file_name;
-                                                }
-                                            }
-                                            echo '</td>';
-
-                                            echo '<td>';
-                                            if ($row['requested_by'] === '') {
-                                                echo '--';
-                                            }else {
-                                                echo $row['requested_by'];
-                                            }
-                                            echo '</td>';
-
-                                            echo '<td>';
-                                            if ($row['lead_time'] === '') {
-                                                echo '--';
-                                            }else {
-                                                echo $row['lead_time'];
-                                            }
-                                            echo '</td>';
-
-                                            if ($_SESSION['role'] != 'hr') {
-                                                echo '<td></td>';
-                                                echo '<td></td>';
-                                            } else {
-                                        ?>
-
-                                                <?php
-                                                echo '<td> <a  type="button" class="btn btn-xs btn-warning" href="edit_file.php?action=edit&id=' . $row['id'] . '"> EDIT </a> </td>';
-                                                echo '<td> <a  type="button" class="btn btn-xs btn-primary" href="release.php?action=release&id=' . $row['id'] . '"> GET OUT </a> </td>';
-                                                ?>
-                                                <td>
-                                                    <a type="button" href="<?php echo 'transac.php?action=delete&id=' . $row['id'] ?>" title="delete" class="btn btn-xs btn-danger" onclick="return confirm('Are you sure you want to delete this item')">DELETE</a>
-                                                </td>
-                                        <?php
-                                            }
-                                            echo '</tr> ';
-                                        }
-                                        ?>
-
-
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
+                        </form>
                         <!-- END DATATABLE EXPORT -->
 
                         <!-- START DEFAULT TABLE EXPORT -->
@@ -250,6 +197,8 @@ $user_id = $_SESSION['id-archive'];
                 </div>
 
             </div>
+            <!-- END PAGE CONTENT WRAPPER -->
+        </div>
         <!-- END PAGE CONTENT -->
     </div>
     <!-- END PAGE CONTAINER -->
